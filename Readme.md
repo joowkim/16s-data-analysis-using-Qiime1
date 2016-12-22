@@ -10,7 +10,7 @@ Required program list
 
 
 
- ####How to use
+ ####How to use####
  
  To run preprocess and otu clustering
  
