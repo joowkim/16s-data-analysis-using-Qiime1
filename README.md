@@ -23,7 +23,7 @@ assign_taxonomy:reference_seqs_fp gg_13_8_otus/rep_set/97_otus.fasta
 
 ==> its_params.txt <==
 
-pick_otus:enable_rev_strand_match True
+pick_otus:enable_rev_strand_match True  
 assign_taxonomy:assignment_method blast
 assign_taxonomy:id_to_taxonomy_fp its_unite/sh_taxonomy_qiime_ver7_dynamic_20.11.2016.txt
 assign_taxonomy:reference_seqs_fp its_unite/sh_refs_qiime_ver7_dynamic_20.11.2016.fasta
