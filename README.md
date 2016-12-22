@@ -11,7 +11,7 @@ Toy qiime nearly automation program for Miseq data (by default setting)
 
 #### Note
 
-Fastq file name should have \_R1_, \_R2_
+Fastq file names shouldn't be modified.
 
 
 ####  param example
@@ -53,8 +53,6 @@ Edit db_path.py file, this file is where you want to put the database paths.
  To generate upgma dendrogram
  
  ```upgma_cluster.py -i *dm.txt -o *.tre```
-
-
 
  
 /*

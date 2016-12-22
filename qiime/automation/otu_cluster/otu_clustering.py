@@ -92,4 +92,3 @@ class Biom(object):
         )
 
         os.system(cmd3)
-        print("otu clustering done!")
