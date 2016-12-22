@@ -7,6 +7,12 @@ Toy qiime nearly automation program for Miseq data (by default setting)
 2. Qiime
 3. click - pip install click
 4. usearch6.x version
+5. cutadapt
+
+#### Note
+
+Fastq file name should have \_R1_, \_R2_
+
 
 ####  param example
 ==> 16s_params.txt <==
