@@ -1,7 +1,6 @@
 
-Toy qiime nearly automation program
-(by default setting)
-==
+Toy qiime nearly automation program (by default setting)
+========================================================
 
 ### Required program list
 1. python3
