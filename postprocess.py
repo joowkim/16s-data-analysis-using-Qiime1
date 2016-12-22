@@ -1,5 +1,3 @@
-import sys
-
 import click
 
 from qiime.automation.diversity_analysis.diversity_analysis import \

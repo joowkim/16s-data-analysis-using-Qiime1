@@ -1,12 +1,12 @@
 import os
 
-from work.microbiome.qiime.automation.otu_cluster.otu_clustering import OTU
-from work.microbiome.qiime.automation.preprocess.chimera_check import Chimera
-from work.microbiome.qiime.automation.preprocess.qiime_logs import Logs
-from work.microbiome.qiime.automation.setting.settings import PathSettings
-from work.microbiome.qiime.rename_for_qiime import rename_fastq_to_sampleid
-from work.microbiome.qiime.utils.utils import check_dir
-from work.microbiome.qiime.utils.utils import check_file
+from qiime.automation.otu_cluster.otu_clustering import OTU
+from qiime.automation.preprocess.chimera_check import Chimera
+from qiime.automation.preprocess.qiime_logs import Logs
+from qiime.automation.setting.settings import PathSettings
+from qiime.rename_for_qiime import rename_fastq_to_sampleid
+from qiime.utils.utils import check_dir
+from qiime.utils.utils import check_file
 
 __author__ = "jkkim"
 

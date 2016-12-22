@@ -44,7 +44,3 @@ def count_fastq(fname):
         for i, _ in enumerate(f, start=1):
             pass
     return i / 4
-
-
-if __name__ == '__main__':
-    rename_fastq_to_sampleid(sys.argv[1])

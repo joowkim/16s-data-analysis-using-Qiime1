@@ -1,9 +1,8 @@
 import glob
 import os
 
-from work.microbiome.qiime.automation.setting.settings import \
-    PathSettings
-from work.microbiome.qiime.utils.utils import check_dir
+from qiime.automation.setting.settings import PathSettings
+from qiime.utils.utils import check_dir
 
 __author__ = "jkkim"
 

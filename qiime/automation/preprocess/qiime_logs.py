@@ -1,7 +1,7 @@
 import os
 
-from work.microbiome.qiime.automation.setting.settings import PathSettings
-from work.microbiome.qiime.utils.utils import count_sample_reads_fa
+from qiime.automation.setting.settings import PathSettings
+from qiime.utils.utils import count_sample_reads_fa
 
 __author__ = "jkkim"
 

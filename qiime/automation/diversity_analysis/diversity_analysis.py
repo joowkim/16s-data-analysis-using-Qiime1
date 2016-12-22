@@ -1,9 +1,8 @@
 import glob
 import os
 
-from work.microbiome.qiime.automation.otu_cluster.otu_clustering import Biom
-from work.microbiome.qiime.automation.setting.settings import \
-    PathSettings
+from qiime.automation.otu_cluster.otu_clustering import Biom
+from qiime.automation.setting.settings import PathSettings
 
 __author__ = "jkkim"
 

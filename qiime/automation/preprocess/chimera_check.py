@@ -1,6 +1,6 @@
 import os
 
-from work.microbiome.qiime.automation.setting.settings import PathSettings
+from qiime.automation.setting.settings import PathSettings
 
 __author__ = "jkkim"
 
