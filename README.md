@@ -8,6 +8,31 @@ Toy qiime nearly automation program (by default setting)
 3. click - pip install click
 4. usearch6.x version
 
+####  param example
+==> 16s_params.txt <==
+
+pick_otus:enable_rev_strand_match True
+
+assign_taxonomy:id_to_taxonomy_fp gg_13_8_otus/taxonomy/97_otu_taxonomy.txt
+assign_taxonomy:reference_seqs_fp gg_13_8_otus/rep_set/97_otus.fasta
+
+==> its_params.txt <==
+
+pick_otus:enable_rev_strand_match True
+assign_taxonomy:assignment_method blast
+assign_taxonomy:id_to_taxonomy_fp its_unite/sh_taxonomy_qiime_ver7_dynamic_20.11.2016.txt
+assign_taxonomy:reference_seqs_fp its_unite/sh_refs_qiime_ver7_dynamic_20.11.2016.fasta
+
+#### Database path setting
+
+As you probably downloaded the database, set those files paths to a setting file.
+
+Go to qiime > automation > setting > db_path.py
+
+Edit db_path.py file, this file is where you want to put the database paths.
+
+(I am thinking about using Yaml or json for this.)
+
 
 #### How to use
  
@@ -22,7 +47,9 @@ Toy qiime nearly automation program (by default setting)
  To generate upgma dendrogram
  
  ```upgma_cluster.py -i *dm.txt -o *.tre```
- 
+
+
+
  
 /*
  * ----------------------------------------------------------------------------
