@@ -33,7 +33,7 @@ class DiversityAnalysis(object):
         return self._post_fix_cmd
 
     def run_core_diversity(self):
-        cmd = '''core_diversity_analyses.py -i {} -o {} -m {} -e {} {} -a -O {}
+        cmd = '''core_diversity_analyses.py -i {} -o {} -m {} -e {} {} -a -O {} -w
         '''.format(
             self._biom_path.biom_path,
             self.settings_path.diversity_result_dir,
