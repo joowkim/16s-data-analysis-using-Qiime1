@@ -95,6 +95,14 @@ class Biom(object):
 
         os.system(cmd3)
 
+        filtered_biom = os.path.join('result', 'otu_table_no_singletons.biom')
+        cmd4 = "filter_otus_from_otu_table.py -i {} -o {} -n 2".format(
+            self._biom_path,
+            filtered_biom
+        )
+
+        os.system(cmd4)
+
     def make_krona(self):
         otu_table_path = os.path.join(r'result', 'otu_table.tsv.bak')
         krona_otu_table_path = os.path.join(r'result', 'otu_table.tsv')
