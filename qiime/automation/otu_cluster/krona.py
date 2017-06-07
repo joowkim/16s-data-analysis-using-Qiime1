@@ -30,9 +30,8 @@ class OtuTable:
 class KronaBuilder:
     def otuTablePathListToKrona(self, otuTablePaths, outputName):
         otuTables = []
-        for path in otuTablePaths:
-            for table in self.parseOtuTable(path):
-                otuTables.append(table)
+        for table in self.parseOtuTable(otuTablePaths):
+            otuTables.append(table)
 
         print("Finished reading in %i samples" % len(otuTables))
         self.runKrona(otuTables, outputName)
@@ -42,7 +41,7 @@ class KronaBuilder:
         data = csv.reader(open(otuTablePath), delimiter="\t")
 
         # Parse headers (sample names)
-        fields = data.next()
+        fields = data.__next__()
         if len(fields) < 3:
             raise ("Badly formed OTU table %s" % otuTablePath)
         tables = []
@@ -57,6 +56,8 @@ class KronaBuilder:
                 taxonomy = row[taxonomyColumn]
                 tables[i].sampleCounts[taxonomy] = row[i + 1]
 
+        data.close()
+
         return tables
 
     def runKrona(self, otuTables, outputName):
@@ -70,7 +71,7 @@ class KronaBuilder:
             out = open(tmp, 'w')
             tempfiles.append(out)
             tempfile_paths.append(tmp)
-            for taxonomy, count in table.sampleCounts.iteritems():
+            for taxonomy, count in table.sampleCounts.items():
                 tax = "\t".join(taxonomy.split(';'))
                 out.write("%s\t%s\n" % (count, tax))
             out.close()
