@@ -68,3 +68,5 @@ class DiversityAnalysis(object):
 
             os.system(cmd)
             print(cmd)
+
+

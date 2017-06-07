@@ -3,6 +3,7 @@ import os
 
 from qiime.automation.setting.settings import PathSettings
 from qiime.utils.utils import check_dir
+from .krona import krona_main
 
 __author__ = "jkkim"
 
@@ -87,8 +88,20 @@ class Biom(object):
             self._biom_path,
             os.path.join(
                 'result',
-                'otu_table.tsv',
+                'otu_table.tsv.bak',
             )
         )
 
         os.system(cmd3)
+
+    def make_krona(self):
+        otu_table_path = os.path.join(r'result', 'otu_table.tsv.bak')
+        krona_otu_table_path = os.path.join(r'result', 'otu_table.tsv')
+
+        sed_cmd = "sed -n '1!p' {} | sed 's@;\ @;@g' > {}".format(otu_table_path, krona_otu_table_path)
+        os.system(sed_cmd)
+
+        krona_path = os.path.join(r'result', 'krona.html')
+        krona_main(krona_otu_table_path, krona_path)
+
+        print("generating krona.html is done.")
