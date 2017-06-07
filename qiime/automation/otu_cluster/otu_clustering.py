@@ -48,6 +48,7 @@ class OTU(object):
         biom = Biom(self.setting_path.otu_cluster_dir)
         biom.get_biom_path()
         biom.make_otu_tables()
+        biom.make_krona()
 
 
 class Biom(object):
