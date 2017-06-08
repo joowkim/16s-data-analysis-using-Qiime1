@@ -29,7 +29,8 @@ class DiversityAnalysis(object):
         if self.settings_path.taxon == 'its':
             self._post_fix_cmd = '--nonphylogenetic_diversity'
         else:
-            self._post_fix_cmd = '-t {}'.format(self._tre_path)
+            # this is for bacteria!
+            self._post_fix_cmd = '-t {} -p {}'.format(self._tre_path, self.settings_path.div_param_path)
         return self._post_fix_cmd
 
     def run_core_diversity(self):
@@ -68,5 +69,3 @@ class DiversityAnalysis(object):
 
             os.system(cmd)
             print(cmd)
-
-

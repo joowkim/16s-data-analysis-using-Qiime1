@@ -4,6 +4,7 @@ from qiime.automation.setting.db_path import bac_chimera_path
 from qiime.automation.setting.db_path import bac_param_path
 from qiime.automation.setting.db_path import bac_ref_seq_path
 from qiime.automation.setting.db_path import bac_taxonomy_path
+from qiime.automation.setting.db_path import bac_div_param_path
 from qiime.automation.setting.db_path import its_chimera_path
 from qiime.automation.setting.db_path import its_param_path
 from qiime.automation.setting.db_path import its_ref_seq_path
@@ -90,12 +91,17 @@ class PathSettings(object):
     def otu_cluster_dir(self):
         return self._otu_cluster_dir
 
+    @property
+    def div_param_path(self):
+        return self._div_param_path
+
     def set_type_taxon(self):
         if self._sample_taxon == 'bac':
             self._chimera_ref_path = bac_chimera_path
             self._ref_seq_path = bac_ref_seq_path
             self._taxonomy_path = bac_taxonomy_path
             self._param_path = bac_param_path
+            self._div_param_path = bac_div_param_path
 
         elif self._sample_taxon == "its":
             self._chimera_ref_path = its_chimera_path
