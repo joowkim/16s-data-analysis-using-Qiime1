@@ -15,17 +15,17 @@ __author__ = "jkkim"
 
 class PathSettings(object):
     def __init__(self, taxon):
-        self._default_preprocess_dir = 'preprocess'
+        self._default_preprocess_dir = '01.Preprocess'
         self._join_fastq_dir = os.path.join(self._default_preprocess_dir,
-                                            'join_fastq', )
+                                            '01.1.Join_fastq', )
         self._split_out_dir = os.path.join(self._default_preprocess_dir,
-                                           'split_out', )
+                                           '01.2.Split_out', )
         self._seq_fna_path = os.path.join(self._split_out_dir,
                                           "seqs.fna", )
         self._length_trimmed_seqs_fna_path = os.path.join(self._split_out_dir,
                                                           "seqs.length_trimmed.fna", )
-        self._chimera_checked_dir = os.path.join("preprocess",
-                                                 "chimera_checked", )
+        self._chimera_checked_dir = os.path.join(self._default_preprocess_dir,
+                                                 "01.3.Chimera_checked", )
         self._seqs_chimeras_filtered_fna_path = os.path.join(
             self._chimera_checked_dir,
             "seqs_chimeras_filtered.fna", )
@@ -35,11 +35,12 @@ class PathSettings(object):
         self._taxonomy_path = None
         self._param_path = None
 
-        self._otu_cluster_dir = os.path.join("result",
-                                             "otu_clustering_{}".format(
+        self._default_analysis_dir = "02.Results"
+        self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
+                                             "02.1.otu_clustering_{}".format(
                                                  taxon), )
-        self._diversity_result_dir = os.path.join('result',
-                                                  'diversity_analysis_{}'.format(
+        self._diversity_result_dir = os.path.join(self._default_analysis_dir,
+                                                  '02.02.diversity_analysis_{}'.format(
                                                       taxon), )
         self.set_type_taxon()
 
