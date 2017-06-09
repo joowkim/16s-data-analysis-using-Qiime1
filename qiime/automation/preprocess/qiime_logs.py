@@ -8,11 +8,11 @@ __author__ = "jkkim"
 
 class Logs(object):
     def __init__(self, PreProcess):
-        if not os.path.isdir("logs"):
-            os.makedirs("logs")
+        if not os.path.isdir("03.Logs"):
+            os.makedirs("03.Logs")
 
         self._settings_path = PathSettings(PreProcess.taxon)
-        self._logs_path = os.path.join('logs', 'reads_stat.log')
+        self._logs_path = os.path.join('03.Logs', 'reads_stat.log')
 
         self._cnt_join_fastq_dict = PreProcess._cnt_join_fastq_dict
 
