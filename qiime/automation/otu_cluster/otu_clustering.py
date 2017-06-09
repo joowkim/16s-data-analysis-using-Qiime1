@@ -55,41 +55,26 @@ class OTU(object):
 class Biom(object):
     def __init__(self, otu_cluster_dir):
         self._otu_cluster_dir = otu_cluster_dir
-        self._biom_path = ""
-        self._filtered_biom_path = ""
-        #TODO dynamic path for otu_table_path some other time.
+        self._biom_path = self.get_biom_path()
+        # TODO dynamic path for otu_table_path some other time.
         self._otu_table_path = ""
 
     @property
     def biom_path(self):
-        return self.get_biom_path()
-
-    @property
-    def filtered_biom_path(self):
-        return self._filtered_biom_path
+        return self._biom_path
 
     def get_biom_path(self):
         check_dir(self._otu_cluster_dir)
         tmp_biom_path = os.path.join(self._otu_cluster_dir, "*.biom")
         pynast_biom_path = sorted([x for x in glob.glob(tmp_biom_path)],
-                                  key=len,
-                                  reverse=True, )[0]
-        self._biom_path = os.path.abspath(pynast_biom_path)
-        return self._biom_path
+                           key=len,
+                           reverse=True, )[0]
 
-    def filter_biom(self):
-        check_dir(self._otu_cluster_dir)
-        filtered_biom = os.path.join(self._otu_cluster_dir, 'otu_table_no_singletons.biom')
-        cmd4 = "filter_otus_from_otu_table.py -i {} -o {} -n 2".format(
-            self._biom_path,
-            filtered_biom
-        )
-        self._filtered_biom_path = filtered_biom
-        os.system(cmd4)
+        return pynast_biom_path
 
     def make_otu_tables(self):
         cmd = "biom summarize-table -i {} -o {}".format(
-            self.filtered_biom_path,
+            self.biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 "stats_reads_per_sample.txt", )
@@ -97,7 +82,7 @@ class Biom(object):
         os.system(cmd)
 
         cmd2 = "biom summarize-table -i {} -o {} --qualitative".format(
-            self.filtered_biom_path,
+            self.biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 "stats_OTUs_per_sample.txt", )
@@ -105,7 +90,7 @@ class Biom(object):
         os.system(cmd2)
 
         cmd3 = "biom convert -i {} -o {} --to-tsv --header-key taxonomy".format(
-            self.filtered_biom_path,
+            self.biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 'otu_table.tsv.bak',
