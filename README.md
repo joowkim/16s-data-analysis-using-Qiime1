@@ -32,6 +32,7 @@ assign_taxonomy:reference_seqs_fp gg_13_8_otus/rep_set/97_otus.fasta
 ==> 16s_div.txt <==
 
 alpha_diversity:metrics shannon,simpson,observed_otus,PD_whole_tree,chao1
+
 beta_diversity:metrics unweighted_unifrac,weighted_unifrac
 
 ==> its_params.txt <==
