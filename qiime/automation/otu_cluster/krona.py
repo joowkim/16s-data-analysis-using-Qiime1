@@ -56,8 +56,6 @@ class KronaBuilder:
                 taxonomy = row[taxonomyColumn]
                 tables[i].sampleCounts[taxonomy] = row[i + 1]
 
-        data.close()
-
         return tables
 
     def runKrona(self, otuTables, outputName):

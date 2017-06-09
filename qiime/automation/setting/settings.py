@@ -40,7 +40,7 @@ class PathSettings(object):
                                              "02.1.otu_clustering_{}".format(
                                                  taxon), )
         self._diversity_result_dir = os.path.join(self._default_analysis_dir,
-                                                  '02.02.diversity_analysis_{}'.format(
+                                                  '02.2.diversity_analysis_{}'.format(
                                                       taxon), )
         self.set_type_taxon()
 
