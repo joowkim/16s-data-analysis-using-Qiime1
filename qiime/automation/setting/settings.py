@@ -44,6 +44,12 @@ class PathSettings(object):
                                                       taxon), )
         self.set_type_taxon()
 
+        self._summarize_taxa_outpath = os.path.join(self._otu_cluster_dir, "taxa")
+
+    @property
+    def summarize_taxa_outpath(self):
+        return self._summarize_taxa_outpath
+
     @property
     def diversity_result_dir(self):
         return self._diversity_result_dir
