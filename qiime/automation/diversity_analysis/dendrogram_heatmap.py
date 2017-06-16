@@ -20,24 +20,20 @@ class DendrogramAndHeatmap(object):
         tmp_bdiv_dir = [x for x in
                         os.listdir(self.settings_path.diversity_result_dir) if
                         x.startswith('bdiv')][0]
-        bdiv_dir = os.path.join(self.settings_path.diversity_result_dir,
-                                tmp_bdiv_dir)
         tmp_dm_path = os.path.join(self.settings_path.diversity_result_dir,
-                                   bdiv_dir, "*dm.txt")
+                                   tmp_bdiv_dir, "*dm.txt")
         dm_path = sorted(
             [x for x in glob.glob(tmp_dm_path) if os.path.isfile(x)])
 
         tre_path = sorted(
-            [os.path.splitext(os.path.basename(x))[0] for x in dm_path])
+            [os.path.splitext(x)[0] + ".tre" for x in dm_path])
 
         for dm, tre in zip(dm_path, tre_path):
-            cmd = 'upgma_cluster.py -i {} -o {}.tre'.format(
+            cmd = 'upgma_cluster.py -i {} -o {}'.format(
                 dm,
-                os.path.join('result', tre)
+                tre,
             )
-
             os.system(cmd)
-            print(cmd)
 
     def make_heatmap(self):
         biom_path = self._biom_path.biom_path
