@@ -49,13 +49,8 @@ assign_taxonomy:reference_seqs_fp its_unite/sh_refs_qiime_ver7_dynamic_20.11.201
 
 #### Database path setting
 
-As you probably downloaded the database, set those files paths to a setting file.
+As you probably downloaded the database, set those files paths to a database_info.json.
 
-Go to qiime > automation > setting > db_path.py
-
-Edit db_path.py file, this file is where you want to put the database paths.
-
-(I am thinking about using Yaml or json for this.)
 
 ----------------------
 #### How to use

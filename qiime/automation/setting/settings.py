@@ -1,10 +1,10 @@
 import os
 
 from qiime.automation.setting.db_path import bac_chimera_path
+from qiime.automation.setting.db_path import bac_div_param_path
 from qiime.automation.setting.db_path import bac_param_path
 from qiime.automation.setting.db_path import bac_ref_seq_path
 from qiime.automation.setting.db_path import bac_taxonomy_path
-from qiime.automation.setting.db_path import bac_div_param_path
 from qiime.automation.setting.db_path import its_chimera_path
 from qiime.automation.setting.db_path import its_param_path
 from qiime.automation.setting.db_path import its_ref_seq_path
