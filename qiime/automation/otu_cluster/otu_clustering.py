@@ -66,8 +66,8 @@ class Biom(object):
         check_dir(self._otu_cluster_dir)
         tmp_biom_path = os.path.join(self._otu_cluster_dir, "*.biom")
         pynast_biom_path = sorted([x for x in glob.glob(tmp_biom_path)],
-                           key=len,
-                           reverse=True, )[0]
+                                  key=len,
+                                  reverse=True, )[0]
 
         return pynast_biom_path
 
@@ -97,6 +97,14 @@ class Biom(object):
         )
 
         os.system(cmd3)
+
+        cmd4 = "alpha_diversity.py -i {} -o {} -m {}".format(
+            self.biom_path,
+            "alpha_stat.txt",
+            "simpson,shannon,goods_coverage",
+        )
+
+        os.system(cmd4)
 
     def make_krona(self):
         otu_table_path = os.path.join(self._otu_cluster_dir, 'otu_table.tsv.bak')
