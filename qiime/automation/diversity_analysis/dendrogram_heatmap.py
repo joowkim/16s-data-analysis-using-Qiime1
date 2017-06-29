@@ -1,6 +1,9 @@
 import glob
 import os
 
+import pylab
+from Bio import Phylo
+
 from qiime.automation.otu_cluster.otu_clustering import Biom
 from qiime.automation.setting.settings import PathSettings
 
@@ -34,6 +37,12 @@ class DendrogramAndHeatmap(object):
                 tre,
             )
             os.system(cmd)
+
+        for tre in tre_path:
+            tree = Phylo.read(tre, "newick")
+            Phylo.draw(tree, do_show=False)
+            pylab.axis("off")
+            pylab.savefig(tre + ".png", format="png")
 
     def make_heatmap(self):
         biom_path = self._biom_path.biom_path
