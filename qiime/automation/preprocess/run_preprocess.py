@@ -22,8 +22,6 @@ class PreProcess(object):
         self._sample_name_list = list()
         self._threads = threads
 
-
-
     @property
     def taxon(self):
         return self._taxon
@@ -112,4 +110,4 @@ class PreProcess(object):
         logs.write_logs()
         otu = OTU(self)
         otu.run_otu_cluster()
-        otu.run_biom(self)
+        otu.run_biom()

@@ -1,4 +1,3 @@
-import glob
 import os
 
 from qiime.automation.otu_cluster.otu_clustering import Biom
@@ -10,7 +9,7 @@ __author__ = "jkkim"
 class DiversityAnalysis(object):
     def __init__(self, taxon, sampling_depth, threads=1):
         self._settings_path = PathSettings(taxon)
-        self._biom_path = Biom(self.settings_path.otu_cluster_dir)
+        self._biom_path = Biom(taxon)
         self._post_fix_cmd = ""
         self._tre_path = os.path.join(self.settings_path.otu_cluster_dir,
                                       'rep_set.tre', )

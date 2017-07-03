@@ -14,6 +14,7 @@ class OTU(object):
         self._post_fix_cmd = ""
         self.set_cmd()
         self._threads = PreProcess._threads
+        self.__taxon = PreProcess.taxon
 
     @property
     def seqs_chimeras_filtered_fna_path(self):
@@ -45,15 +46,15 @@ class OTU(object):
         print("otu clustering done!")
 
     def run_biom(self):
-        biom = Biom(self.setting_path)
+        biom = Biom(self.__taxon)
         biom.get_biom_path()
         biom.make_otu_tables()
         biom.make_krona()
 
 
 class Biom(object):
-    def __init__(self, settings_path):
-        self._settings_path = settings_path
+    def __init__(self, taxon):
+        self._settings_path = PathSettings(taxon)
         self._otu_cluster_dir = self._settings_path.otu_cluster_dir
         self._biom_path = self.get_biom_path()
         # TODO dynamic path for otu_table_path some other time.
@@ -101,7 +102,7 @@ class Biom(object):
 
         cmd4 = "alpha_diversity.py -i {} -o {} -m {}".format(
             self.biom_path,
-            "alpha_diversity_simpson_shannon_goodscor.txt",
+            os.path.join(self._settings_path.final_path, "alpha_diversity_simpson_shannon_goodscor.txt"),
             "simpson,shannon,goods_coverage",
         )
 
