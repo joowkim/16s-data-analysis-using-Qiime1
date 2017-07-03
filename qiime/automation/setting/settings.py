@@ -39,16 +39,40 @@ class PathSettings(object):
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
                                              "02.1.otu_clustering_{}".format(
                                                  taxon), )
-        self._diversity_result_dir = os.path.join(self._default_analysis_dir,
-                                                  '02.2.diversity_analysis_{}'.format(
-                                                      taxon), )
+        # self._diversity_result_dir = os.path.join(self._default_analysis_dir,
+        #                                           '02.2.diversity_analysis_{}'.format(
+        #                                               taxon), )
         self.set_type_taxon()
 
-        self._summarize_taxa_outpath = os.path.join(self._otu_cluster_dir, "taxa")
+        self._final_dir = "04.final_results"
+
+        if not os.path.isdir(self._final_dir):
+            os.makedirs(self._final_dir)
+
+        self._final_path = os.path.abspath(self.final_dir)
+
+        self._krona_path = os.path.join(self._final_dir, "04.2.Krona")
+        self._otu_heatmap_path = os.path.join(self._final_dir, "04.3.Heatmap")
+
+        self._diversity_result_dir = os.path.join(self._final_path,
+                                                  '04.1.diversity_analysis_{}'.format(
+                                                      taxon), )
 
     @property
-    def summarize_taxa_outpath(self):
-        return self._summarize_taxa_outpath
+    def krona_path(self):
+        return self._krona_path
+
+    @property
+    def otu_heatmap_path(self):
+        return self._otu_heatmap_path
+
+    @property
+    def final_path(self):
+        return self._final_path
+
+    @property
+    def final_dir(self):
+        return self._final_dir
 
     @property
     def diversity_result_dir(self):

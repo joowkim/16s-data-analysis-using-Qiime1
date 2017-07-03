@@ -22,6 +22,8 @@ class PreProcess(object):
         self._sample_name_list = list()
         self._threads = threads
 
+
+
     @property
     def taxon(self):
         return self._taxon
@@ -105,6 +107,7 @@ class PreProcess(object):
         chimera.check_chimera()
         chimera.filter_chimera()
         logs = Logs(self)
+        # this function is for creating a map file.
         logs.write_sample_id()
         logs.write_logs()
         otu = OTU(self)

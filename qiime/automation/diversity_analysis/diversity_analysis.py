@@ -45,27 +45,3 @@ class DiversityAnalysis(object):
         )
 
         os.system(cmd)
-
-    # deprecated
-    def make_dendrogram(self):
-        tmp_bdiv_dir = [x for x in
-                        os.listdir(self.settings_path.diversity_result_dir) if
-                        x.startswith('bdiv')][0]
-        bdiv_dir = os.path.join(self.settings_path.diversity_result_dir,
-                                tmp_bdiv_dir)
-        tmp_dm_path = os.path.join(self.settings_path.diversity_result_dir,
-                                   bdiv_dir, "*dm.txt")
-        dm_path = sorted(
-            [x for x in glob.glob(tmp_dm_path) if os.path.isfile(x)])
-
-        tre_path = sorted(
-            [os.path.splitext(os.path.basename(x))[0] for x in dm_path])
-
-        for dm, tre in zip(dm_path, tre_path):
-            cmd = 'upgma_cluster.py -i {} -o {}.tre'.format(
-                dm,
-                os.path.join('result', tre)
-            )
-
-            os.system(cmd)
-            print(cmd)

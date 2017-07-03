@@ -48,11 +48,11 @@ class DendrogramAndHeatmap(object):
         biom_path = self._biom_path.biom_path
 
         cmd = '''summarize_taxa.py -i {} -o {} 
-        '''.format(biom_path, self.settings_path.summarize_taxa_outpath)
+        '''.format(biom_path, self.settings_path.otu_heatmap_path)
 
         os.system(cmd)
 
-        taxa_biom_list = sorted([i for i in glob.glob(os.path.join(self.settings_path.summarize_taxa_outpath,
+        taxa_biom_list = sorted([i for i in glob.glob(os.path.join(self.settings_path.otu_heatmap_path,
                                                                    "*.biom")
                                                       )
                                  ])

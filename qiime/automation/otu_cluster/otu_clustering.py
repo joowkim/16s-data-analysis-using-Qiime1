@@ -45,15 +45,16 @@ class OTU(object):
         print("otu clustering done!")
 
     def run_biom(self):
-        biom = Biom(self.setting_path.otu_cluster_dir)
+        biom = Biom(self.setting_path.otu_cluster_dir, self.setting_path.final_path)
         biom.get_biom_path()
         biom.make_otu_tables()
         biom.make_krona()
 
 
 class Biom(object):
-    def __init__(self, otu_cluster_dir):
-        self._otu_cluster_dir = otu_cluster_dir
+    def __init__(self, PreProcess):
+        self._settings_path = PathSettings(PreProcess.taxon)
+        self._otu_cluster_dir = self._settings_path.otu_cluster_dir
         self._biom_path = self.get_biom_path()
         # TODO dynamic path for otu_table_path some other time.
         self._otu_table_path = ""
@@ -100,7 +101,7 @@ class Biom(object):
 
         cmd4 = "alpha_diversity.py -i {} -o {} -m {}".format(
             self.biom_path,
-            "alpha_stat.txt",
+            "alpha_diversity_simpson_shannon_goodscor.txt",
             "simpson,shannon,goods_coverage",
         )
 
@@ -110,10 +111,13 @@ class Biom(object):
         otu_table_path = os.path.join(self._otu_cluster_dir, 'otu_table.tsv.bak')
         krona_otu_table_path = os.path.join(self._otu_cluster_dir, 'otu_table.tsv')
 
+        if not os.path.isdir(self._settings_path._krona_path):
+            os.makedirs(self._settings_path._krona_path)
+
         sed_cmd = "sed -n '1!p' {} | sed 's@;\ @;@g' > {}".format(otu_table_path, krona_otu_table_path)
         os.system(sed_cmd)
 
-        krona_path = os.path.join(self._otu_cluster_dir, 'krona.html')
+        krona_path = os.path.join(self._settings_path.krona_path, 'krona.html')
         krona_main(krona_otu_table_path, krona_path)
 
         print("generating krona.html is done.")
