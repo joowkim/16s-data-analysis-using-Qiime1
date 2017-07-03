@@ -112,4 +112,4 @@ class PreProcess(object):
         logs.write_logs()
         otu = OTU(self)
         otu.run_otu_cluster()
-        otu.run_biom()
+        otu.run_biom(self)

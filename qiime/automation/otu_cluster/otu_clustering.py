@@ -45,15 +45,15 @@ class OTU(object):
         print("otu clustering done!")
 
     def run_biom(self):
-        biom = Biom(self.setting_path.otu_cluster_dir, self.setting_path.final_path)
+        biom = Biom(self.setting_path)
         biom.get_biom_path()
         biom.make_otu_tables()
         biom.make_krona()
 
 
 class Biom(object):
-    def __init__(self, PreProcess):
-        self._settings_path = PathSettings(PreProcess.taxon)
+    def __init__(self, settings_path):
+        self._settings_path = settings_path
         self._otu_cluster_dir = self._settings_path.otu_cluster_dir
         self._biom_path = self.get_biom_path()
         # TODO dynamic path for otu_table_path some other time.
