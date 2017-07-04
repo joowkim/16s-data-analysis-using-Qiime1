@@ -41,7 +41,7 @@ class PathSettings(object):
                                                  taxon), )
         self.set_type_taxon()
 
-        self._final_dir = "04.final_results"
+        self._final_dir = "04.Final_results"
 
         if not os.path.isdir(self._final_dir):
             os.makedirs(self._final_dir)

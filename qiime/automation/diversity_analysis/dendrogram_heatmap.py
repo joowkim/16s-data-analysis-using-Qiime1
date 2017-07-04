@@ -13,7 +13,7 @@ __author__ = "jkkim"
 class DendrogramAndHeatmap(object):
     def __init__(self, taxon):
         self._settings_path = PathSettings(taxon)
-        self._biom_path = Biom(self.settings_path.otu_cluster_dir)
+        self._biom_path = Biom(taxon)
 
     @property
     def settings_path(self):
