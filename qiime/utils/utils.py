@@ -1,3 +1,5 @@
+import glob
+import gzip
 import os
 from collections import defaultdict
 
@@ -24,9 +26,16 @@ def parse_fasta(fa_handler):
         yield (name, ''.join(seq))
 
 
+def count_fq_gz(fname):
+    with gzip.open(fname, 'rt')as fin:
+        for i, _ in enumerate(fin, start=1):
+            pass
+    return i
+
+
 def count_file(fname):
-    with open(fname, 'rt') as f:
-        for i, _ in enumerate(f, start=1):
+    with open(fname, 'rt') as fin:
+        for i, _ in enumerate(fin, start=1):
             pass
     return i
 
@@ -71,4 +80,14 @@ def count_sample_reads_fa(sample_list, fasta):
             if sample_id in sample_set:
                 result[sample_id] += 1
 
+    return result
+
+
+def count_trimmed_gz(input_dir):
+    result = defaultdict(int)
+    fq_list = [i for i in glob.glob(os.path.join(input_dir, "_R1_*.gz")) if os.path.isfile(i)]
+
+    for i in fq_list:
+        sample_name = os.path.basename(i).split("_")[0]
+        result[sample_name] = count_fq_gz(i)
     return result

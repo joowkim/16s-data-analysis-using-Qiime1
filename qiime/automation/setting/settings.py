@@ -35,13 +35,13 @@ class PathSettings(object):
         self._taxonomy_path = None
         self._param_path = None
 
-        self._default_analysis_dir = "02.Results"
+        self._default_analysis_dir = "03.OTU_clustering_result"
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
-                                             "02.1.otu_clustering_{}".format(
+                                             "03.1.otu_clustering_{}".format(
                                                  taxon), )
         self.set_type_taxon()
 
-        self._final_dir = "04.Final_results"
+        self._final_dir = "04.Diversity_results"
 
         if not os.path.isdir(self._final_dir):
             os.makedirs(self._final_dir)

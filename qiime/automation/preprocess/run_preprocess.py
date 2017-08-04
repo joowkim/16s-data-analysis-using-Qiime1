@@ -94,7 +94,7 @@ class PreProcess(object):
         )
         os.system(cutadat_cmd)
         os.chdir(self.cur_dir_path)
-        print("rename and trim length seqs.fna done!")
+        #print("rename and trim length seqs.fna done!")
 
     def preprocess_run(self):
         self.merge_fastq()
@@ -106,8 +106,9 @@ class PreProcess(object):
         chimera.filter_chimera()
         logs = Logs(self)
         # this function is for creating a map file.
-        logs.write_sample_id()
-        logs.write_logs()
-        otu = OTU(self)
-        otu.run_otu_cluster()
-        otu.run_biom()
+        logs.make_map_file()
+
+        # logs.write_logs()
+        # otu = OTU(self)
+        # otu.run_otu_cluster()
+        # otu.run_biom()
