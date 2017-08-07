@@ -94,7 +94,7 @@ class PreProcess(object):
         )
         os.system(cutadat_cmd)
         os.chdir(self.cur_dir_path)
-        #print("rename and trim length seqs.fna done!")
+        # print("rename and trim length seqs.fna done!")
 
     def preprocess_run(self):
         self.merge_fastq()
@@ -108,7 +108,7 @@ class PreProcess(object):
         # this function is for creating a map file.
         logs.make_map_file()
 
-        # logs.write_logs()
-        # otu = OTU(self)
-        # otu.run_otu_cluster()
-        # otu.run_biom()
+        otu = OTU(self)
+        otu.run_otu_cluster()
+        otu.run_biom()
+        logs.write_logs(logs.make_logs())

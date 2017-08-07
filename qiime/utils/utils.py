@@ -85,7 +85,7 @@ def count_sample_reads_fa(sample_list, fasta):
 
 def count_trimmed_gz(input_dir):
     result = defaultdict(int)
-    fq_list = [i for i in glob.glob(os.path.join(input_dir, "_R1_*.gz")) if os.path.isfile(i)]
+    fq_list = [i for i in glob.glob(os.path.join(input_dir, "*_R1_*.gz")) if os.path.isfile(i)]
 
     for i in fq_list:
         sample_name = os.path.basename(i).split("_")[0]
