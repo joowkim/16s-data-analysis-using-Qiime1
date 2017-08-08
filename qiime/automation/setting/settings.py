@@ -54,6 +54,17 @@ class PathSettings(object):
         self._diversity_result_dir = os.path.join(self._final_path,
                                                   '04.1.diversity_analysis_{}'.format(
                                                       taxon), )
+        self._pcoa_2d_dir = os.path.join(self.final_path, "04.4.PcoA.2d")
+
+        self._map_file_path = os.path.join(os.getcwd(), "map.txt")
+
+    @property
+    def map_file_path(self):
+        return self._map_file_path
+
+    @property
+    def pcao_2d_path(self):
+        return self._pcoa_2d_dir
 
     @property
     def krona_path(self):

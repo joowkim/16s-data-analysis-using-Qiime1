@@ -30,7 +30,7 @@ def count_fq_gz(fname):
     with gzip.open(fname, 'rt')as fin:
         for i, _ in enumerate(fin, start=1):
             pass
-    return i
+    return i / 4
 
 
 def count_file(fname):

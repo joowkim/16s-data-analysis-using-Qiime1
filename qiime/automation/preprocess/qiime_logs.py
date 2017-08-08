@@ -84,7 +84,7 @@ class Logs(object):
 
     def write_logs(self, reads_log_list):
         with open(self._logs_path, 'wt')as fout:
-            fout.write("sample_name triimed_reads   merged_reads    chimera_reads   cleaned_reads\n")
+            fout.write("sample_name trimmed_reads   merged_reads    chimera_reads   cleaned_reads\n")
 
             for i in reads_log_list:
                 tmp = "{}   {}  {}  {}  {}\n".format(i.sample_name,

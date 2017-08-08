@@ -65,6 +65,21 @@ class DendrogramAndHeatmap(object):
 
             os.system(cmd2)
 
+    def make_2d_pcoa(self):
+        tmp_bdiv_dir = [x for x in
+                        os.listdir(self.settings_path.diversity_result_dir) if
+                        x.startswith('bdiv')][0]
+        tmp_pc_path = os.path.join(self.settings_path.diversity_result_dir,
+                                   tmp_bdiv_dir, "*pc.txt")
+
+        pc_txt_path = [i for i in glob.glob(tmp_pc_path) if os.path.isfile(i)]
+
+        for pc in pc_txt_path:
+            cmd3 = '''make_2d_plots.py -i {} -o {} -m {}
+            '''.format(pc, self.settings_path.pcao_2d_path, self.settings_path.map_file_path)
+            os.system(cmd3)
+
     def __call__(self, *args, **kwargs):
         self.make_dendrogram()
         self.make_heatmap()
+        self.make_2d_pcoa()

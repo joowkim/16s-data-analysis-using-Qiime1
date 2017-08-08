@@ -96,6 +96,12 @@ class PreProcess(object):
         os.chdir(self.cur_dir_path)
         # print("rename and trim length seqs.fna done!")
 
+    def make_map_file(self):
+        with open("map.txt", 'wt')as fout:
+            fout.write("#SampleID" + "\n")
+            for i in self._sample_name_list:
+                fout.write(i + "\n")
+
     def preprocess_run(self):
         self.merge_fastq()
         self.rename_merged_fastq()
@@ -106,7 +112,7 @@ class PreProcess(object):
         chimera.filter_chimera()
         logs = Logs(self)
         # this function is for creating a map file.
-        logs.make_map_file()
+        self.make_map_file()
 
         otu = OTU(self)
         otu.run_otu_cluster()
