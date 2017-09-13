@@ -88,7 +88,7 @@ class PreProcess(object):
 
         os.system(sed_cmd)
 
-        cutadat_cmd = "cutadapt {} -m 300 -o {}".format(
+        cutadat_cmd = "cutadapt {} -m 400 -o {} -M 470".format(
             self.settings_path.seq_fna_path,
             self.settings_path.length_trimmed_seqs_fna_path,
 

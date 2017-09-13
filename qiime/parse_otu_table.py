@@ -30,6 +30,6 @@ def main(tsv_file):
 
 
 if __name__ == '__main__':
-    test = r'data/otu_tables.tsv'
+    test = r'test_otu_table/otu_tables.tsv'
     main(test)
     main(sys.argv[1])

@@ -48,7 +48,7 @@ class KronaBuilder:
             table = OtuTable(fields[i + 1])
             tables.append(table)
 
-        # Parse the data in
+        # Parse the test_otu_table in
         taxonomyColumn = len(fields) - 1
         for row in data:
             for i in range(len(fields) - 2):
