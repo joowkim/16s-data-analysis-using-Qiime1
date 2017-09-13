@@ -9,6 +9,7 @@ from qiime.automation.setting.db_path import its_chimera_path
 from qiime.automation.setting.db_path import its_param_path
 from qiime.automation.setting.db_path import its_ref_seq_path
 from qiime.automation.setting.db_path import its_taxonomy_path
+from qiime.automation.setting.db_path import multiple_split_param
 
 __author__ = "jkkim"
 
@@ -34,7 +35,7 @@ class PathSettings(object):
         self._ref_seq_path = None
         self._taxonomy_path = None
         self._param_path = None
-        self._multiple_split_param = None
+        self._multiple_split_param = multiple_split_param
 
         self._default_analysis_dir = "03.OTU_clustering_result"
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
