@@ -69,9 +69,10 @@ class PreProcess(object):
     def multiple_split_run(self):
         check_dir(self.settings_path.join_fastq_dir)
 
-        cmd = "multiple_split_libraries_fastq.py -i {} -o {}".format(
+        cmd = "multiple_split_libraries_fastq.py -i {} -o {} -p {}".format(
             self.settings_path.join_fastq_dir,
             self.settings_path.split_out_dir,
+            self.settings_path.multiple_split_param,
         )
         os.system(cmd)
         os.chdir(self._cur_dir_path)

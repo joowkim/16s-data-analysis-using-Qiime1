@@ -34,6 +34,7 @@ class PathSettings(object):
         self._ref_seq_path = None
         self._taxonomy_path = None
         self._param_path = None
+        self._multiple_split_param = None
 
         self._default_analysis_dir = "03.OTU_clustering_result"
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
@@ -57,6 +58,10 @@ class PathSettings(object):
         self._pcoa_2d_dir = os.path.join(self.final_path, "04.4.PcoA.2d")
 
         self._map_file_path = os.path.join(os.getcwd(), "map.txt")
+
+    @property
+    def multiple_split_param(self):
+        return self._multiple_split_param
 
     @property
     def map_file_path(self):
