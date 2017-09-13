@@ -31,14 +31,13 @@ class OTU(object):
             pass
 
     def run_otu_cluster(self):
-        cmd = '''pick_closed_reference_otus.py -i {} -o {} -r {} -p {} {}  -f -a -O {} -t{}
+        cmd = '''pick_closed_reference_otus.py -i {} -o {} -r {} -p {} {}  -f -a -O {} -t {}
         '''.format(
             self.seqs_chimeras_filtered_fna_path,
             self.setting_path.otu_cluster_dir,
             self.setting_path.ref_seq_path,
             self.setting_path.param_path,
             self._post_fix_cmd,
-            "usearch61",
             self._threads,
             self.setting_path.taxonomy_path
         )
