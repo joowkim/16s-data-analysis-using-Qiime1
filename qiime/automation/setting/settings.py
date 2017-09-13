@@ -130,6 +130,10 @@ class PathSettings(object):
     def div_param_path(self):
         return self._div_param_path
 
+    @property
+    def taxonomy_path(self):
+        return self._taxonomy_path
+
     def set_type_taxon(self):
         if self._sample_taxon == 'bac':
             self._chimera_ref_path = bac_chimera_path

@@ -31,7 +31,7 @@ class OTU(object):
             pass
 
     def run_otu_cluster(self):
-        cmd = '''pick_open_reference_otus.py -i {} -o {} -r {} -p {} {} -m {} -f -a -O {}
+        cmd = '''pick_closed_reference_otus.py -i {} -o {} -r {} -p {} {} -m {} -f -a -O {} -t{}
         '''.format(
             self.seqs_chimeras_filtered_fna_path,
             self.setting_path.otu_cluster_dir,
@@ -40,6 +40,7 @@ class OTU(object):
             self._post_fix_cmd,
             "usearch61",
             self._threads,
+            self.setting_path.taxonomy_path
         )
 
         os.system(cmd)
