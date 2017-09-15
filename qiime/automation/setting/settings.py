@@ -69,6 +69,10 @@ class PathSettings(object):
         self._map_file_path = os.path.join(os.getcwd(), "map.txt")
 
     @property
+    def ref_db(self):
+        return self._ref_db
+
+    @property
     def multiple_split_param(self):
         return self._multiple_split_param
 

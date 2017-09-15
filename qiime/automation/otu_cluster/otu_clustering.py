@@ -10,11 +10,12 @@ __author__ = "jkkim"
 
 class OTU(object):
     def __init__(self, PreProcess):
-        self._settings_path = PathSettings(PreProcess.taxon)
+        self._settings_path = PathSettings(PreProcess.taxon, PreProcess.ref_db)
         self._post_fix_cmd = ""
         self.set_cmd()
         self._threads = PreProcess._threads
         self.__taxon = PreProcess.taxon
+        self.__ref_db = PreProcess.ref_db
 
     @property
     def seqs_chimeras_filtered_fna_path(self):
@@ -44,7 +45,7 @@ class OTU(object):
         print("otu clustering done!")
 
     def run_biom(self):
-        biom = Biom(self.__taxon)
+        biom = Biom(self.__taxon, self.__ref_db)
         biom.get_biom_path()
         biom.filtered_biom()
         biom.make_otu_tables()
@@ -52,8 +53,8 @@ class OTU(object):
 
 
 class Biom(object):
-    def __init__(self, taxon):
-        self._settings_path = PathSettings(taxon)
+    def __init__(self, taxon, ref_db):
+        self._settings_path = PathSettings(taxon, ref_db)
         self._otu_cluster_dir = self._settings_path.otu_cluster_dir
         self._biom_path = self.get_biom_path()
         # TODO dynamic path for otu_table_path some other time.

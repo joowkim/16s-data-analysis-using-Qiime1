@@ -11,9 +11,9 @@ __author__ = "jkkim"
 
 
 class DendrogramAndHeatmap(object):
-    def __init__(self, taxon):
-        self._settings_path = PathSettings(taxon)
-        self._biom_path = Biom(taxon)
+    def __init__(self, taxon, ref_db):
+        self._settings_path = PathSettings(taxon, ref_db)
+        self._biom_path = Biom(taxon, ref_db)
 
     @property
     def settings_path(self):
@@ -45,7 +45,7 @@ class DendrogramAndHeatmap(object):
             pylab.savefig(tre + ".png", format="png")
 
     def make_heatmap(self):
-        biom_path = self._biom_path.biom_path
+        biom_path = self._biom_path.filtered_biom_path
 
         cmd = '''summarize_taxa.py -i {} -o {} 
         '''.format(biom_path, self.settings_path.otu_heatmap_path)

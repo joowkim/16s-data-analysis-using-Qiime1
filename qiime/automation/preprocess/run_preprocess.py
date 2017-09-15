@@ -21,6 +21,11 @@ class PreProcess(object):
         self._cnt_join_fastq_dict = dict()
         self._sample_name_list = list()
         self._threads = threads
+        self._ref_db = ref_db
+
+    @property
+    def ref_db(self):
+        return self._ref_db
 
     @property
     def taxon(self):
