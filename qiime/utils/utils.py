@@ -47,7 +47,7 @@ def check_dir(dir):
                 dir,
             )
         )
-        quit()
+        raise ValueError
 
 
 def check_file(file_name):
@@ -57,7 +57,7 @@ def check_file(file_name):
                 file_name,
             )
         )
-        quit()
+        raise ValueError
 
 
 def count_fasta(fname):

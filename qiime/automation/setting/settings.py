@@ -1,10 +1,17 @@
 import os
 
-from qiime.automation.setting.db_path import bac_chimera_path
-from qiime.automation.setting.db_path import bac_div_param_path
-from qiime.automation.setting.db_path import bac_param_path
-from qiime.automation.setting.db_path import bac_ref_seq_path
-from qiime.automation.setting.db_path import bac_taxonomy_path
+from qiime.automation.setting.db_path import gg_bac_chimera_path
+from qiime.automation.setting.db_path import gg_bac_div_param_path
+from qiime.automation.setting.db_path import gg_bac_param_path
+from qiime.automation.setting.db_path import gg_bac_ref_seq_path
+from qiime.automation.setting.db_path import gg_bac_taxonomy_path
+
+from qiime.automation.setting.db_path import silva_bac_chimera_path
+from qiime.automation.setting.db_path import silva_bac_div_param_path
+from qiime.automation.setting.db_path import silva_bac_param_path
+from qiime.automation.setting.db_path import silva_bac_ref_seq_path
+from qiime.automation.setting.db_path import silva_bac_taxonomy_path
+
 from qiime.automation.setting.db_path import its_chimera_path
 from qiime.automation.setting.db_path import its_param_path
 from qiime.automation.setting.db_path import its_ref_seq_path
@@ -15,7 +22,8 @@ __author__ = "jkkim"
 
 
 class PathSettings(object):
-    def __init__(self, taxon):
+    def __init__(self, taxon, ref_db):
+        self._ref_db = ref_db
         self._default_preprocess_dir = '01.Preprocess'
         self._join_fastq_dir = os.path.join(self._default_preprocess_dir,
                                             '01.1.Join_fastq', )
@@ -41,7 +49,7 @@ class PathSettings(object):
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
                                              "03.1.otu_clustering_{}".format(
                                                  taxon), )
-        self.set_type_taxon()
+        self.set_ref_database()
 
         self._final_dir = "04.Diversity_results"
 
@@ -140,18 +148,25 @@ class PathSettings(object):
     def taxonomy_path(self):
         return self._taxonomy_path
 
-    def set_type_taxon(self):
-        if self._sample_taxon == 'bac':
-            self._chimera_ref_path = bac_chimera_path
-            self._ref_seq_path = bac_ref_seq_path
-            self._taxonomy_path = bac_taxonomy_path
-            self._param_path = bac_param_path
-            self._div_param_path = bac_div_param_path
+    def set_ref_database(self):
+        if self._ref_db == "gg":
+            self._chimera_ref_path = gg_bac_chimera_path
+            self._ref_seq_path = gg_bac_ref_seq_path
+            self._taxonomy_path = gg_bac_taxonomy_path
+            self._param_path = gg_bac_param_path
+            self._div_param_path = gg_bac_div_param_path
 
-        elif self._sample_taxon == "its":
+        elif self._ref_db == "silva":
+            self._chimera_ref_path = silva_bac_chimera_path
+            self._ref_seq_path = silva_bac_ref_seq_path
+            self._taxonomy_path = silva_bac_taxonomy_path
+            self._param_path = silva_bac_param_path
+            self._div_param_path = silva_bac_div_param_path
+
+        elif self._ref_db == "unite":
             self._chimera_ref_path = its_chimera_path
             self._ref_seq_path = its_ref_seq_path
             self._taxonomy_path = its_taxonomy_path
             self._param_path = its_param_path
         else:
-            raise ValueError("taxon is either bac or its!")
+            raise ValueError("ref db should be either gg or silva!")

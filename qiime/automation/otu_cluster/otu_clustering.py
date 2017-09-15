@@ -46,6 +46,7 @@ class OTU(object):
     def run_biom(self):
         biom = Biom(self.__taxon)
         biom.get_biom_path()
+        biom.filtered_biom()
         biom.make_otu_tables()
         biom.make_krona()
 
@@ -57,10 +58,15 @@ class Biom(object):
         self._biom_path = self.get_biom_path()
         # TODO dynamic path for otu_table_path some other time.
         self._otu_table_path = ""
+        self._filtered_biom_path = os.path.join(self._otu_cluster_dir, "filtered_biom.biom")
 
     @property
     def biom_path(self):
         return self._biom_path
+
+    @property
+    def filtered_biom_path(self):
+        return self._filtered_biom_path
 
     def get_biom_path(self):
         check_dir(self._otu_cluster_dir)
@@ -71,9 +77,16 @@ class Biom(object):
 
         return pynast_biom_path
 
+    def filtered_biom(self):
+        cmd = "filter_otus_from_otus_table.py -i {} -o {} --min_count_fraction 0.00005".format(
+            self.biom_path,
+            self.filtered_biom_path
+        )
+        os.system(cmd)
+
     def make_otu_tables(self):
         cmd = "biom summarize-table -i {} -o {}".format(
-            self.biom_path,
+            self.filtered_biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 "stats_reads_per_sample.txt", )
@@ -81,7 +94,7 @@ class Biom(object):
         os.system(cmd)
 
         cmd2 = "biom summarize-table -i {} -o {} --qualitative".format(
-            self.biom_path,
+            self.filtered_biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 "stats_OTUs_per_sample.txt", )
@@ -89,7 +102,7 @@ class Biom(object):
         os.system(cmd2)
 
         cmd3 = "biom convert -i {} -o {} --to-tsv --header-key taxonomy".format(
-            self.biom_path,
+            self.filtered_biom_path,
             os.path.join(
                 self._otu_cluster_dir,
                 'otu_table.tsv.bak',
@@ -99,7 +112,7 @@ class Biom(object):
         os.system(cmd3)
 
         cmd4 = "alpha_diversity.py -i {} -o {} -m {}".format(
-            self.biom_path,
+            self.filtered_biom_path,
             os.path.join(self._settings_path.final_path, "alpha_diversity_simpson_shannon_goodscor.txt"),
             "simpson,shannon,goods_coverage",
         )

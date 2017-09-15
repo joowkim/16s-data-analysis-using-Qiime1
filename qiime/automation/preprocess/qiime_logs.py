@@ -87,7 +87,7 @@ class Logs(object):
             fout.write("sample_name trimmed_reads   merged_reads    chimera_reads   cleaned_reads\n")
 
             for i in reads_log_list:
-                tmp = "{}   {}  {}  {}  {}\n".format(i.sample_name,
+                tmp = "{},{},{},{},{}\n".format(i.sample_name,
                                                      i.qual_trimmed_reads,
                                                      i.merged_reads,
                                                      i.chimera_reads,

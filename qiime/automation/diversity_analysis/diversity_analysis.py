@@ -35,12 +35,11 @@ class DiversityAnalysis(object):
     def run_core_diversity(self):
         cmd = '''core_diversity_analyses.py -i {} -o {} -m {} -e {} {} -a -O {}
         '''.format(
-            self._biom_path.biom_path,
+            self._biom_path.filtered_biom_path,
             self.settings_path.diversity_result_dir,
             "map.txt",
             self._sampling_depth,
             self.post_fix_cmd,
             self._threads,
         )
-
         os.system(cmd)
