@@ -9,9 +9,10 @@ __author__ = "jkkim"
 @click.option('-i', help='rawdata dir')
 @click.option('-s', help="sample type is either bac or its.")
 @click.option('-t', type=int, help="threads.")
-def main(i, t, s):
+@click.option('-r', help="ref database is either gg or silva.")
+def main(i, t, s, r):
     """do preprocess and otu clustering for community analysis."""
-    run = PreProcess(rawdata_dir=i, taxon=s, threads=t)
+    run = PreProcess(rawdata_dir=i, taxon=s, ref_db=r, threads=t, )
     run.preprocess_run()
 
 

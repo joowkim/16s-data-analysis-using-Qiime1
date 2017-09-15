@@ -12,8 +12,8 @@ __author__ = "jkkim"
 
 
 class PreProcess(object):
-    def __init__(self, rawdata_dir, taxon, threads=1):
-        self._settings_path = PathSettings(taxon)
+    def __init__(self, rawdata_dir, taxon, ref_db, threads=1, ):
+        self._settings_path = PathSettings(taxon, ref_db=ref_db)
         self._taxon = taxon
         self._rawdata_dir = rawdata_dir
         self._cur_dir_path = os.path.abspath(os.getcwd())
