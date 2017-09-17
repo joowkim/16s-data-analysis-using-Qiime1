@@ -26,7 +26,7 @@ class Logs(object):
 
         self._rawdata_dir = os.path.abspath(PreProcess.rawdata_dir)
         self._taxon = PreProcess.taxon
-        self._settings_path = PathSettings(PreProcess.taxon)
+        self._settings_path = PathSettings(PreProcess.taxon, PreProcess.ref_db)
         self._logs_path = os.path.join('02.Logs', 'reads_stat.log')
 
         self._cnt_join_fastq_dict = PreProcess.cnt_join_fastq_dict
@@ -88,10 +88,10 @@ class Logs(object):
 
             for i in reads_log_list:
                 tmp = "{},{},{},{},{}\n".format(i.sample_name,
-                                                     i.qual_trimmed_reads,
-                                                     i.merged_reads,
-                                                     i.chimera_reads,
-                                                     i.cleaned_reads, )
+                                                i.qual_trimmed_reads,
+                                                i.merged_reads,
+                                                i.chimera_reads,
+                                                i.cleaned_reads, )
                 fout.write(tmp)
 
 

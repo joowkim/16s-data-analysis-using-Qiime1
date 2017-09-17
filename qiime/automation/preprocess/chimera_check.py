@@ -7,7 +7,7 @@ __author__ = "jkkim"
 
 class Chimera(object):
     def __init__(self, PreProcess):
-        self._settings_path = PathSettings(PreProcess.taxon, PreProcess.ref)
+        self._settings_path = PathSettings(PreProcess.taxon, PreProcess.ref_db)
 
     @property
     def settings_path(self):
