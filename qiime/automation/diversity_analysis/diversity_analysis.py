@@ -9,10 +9,9 @@ __author__ = "jkkim"
 class DiversityAnalysis(object):
     def __init__(self, taxon, sampling_depth, ref_db, threads=1):
         self._settings_path = PathSettings(taxon, ref_db)
-        self._biom_path = Biom(taxon)
+        self._biom_path = Biom(taxon, ref_db)
         self._post_fix_cmd = ""
-        self._tre_path = os.path.join(self.settings_path.otu_cluster_dir,
-                                      'rep_set.tre', )
+        self._tre_path = self.settings_path._rep_set_tree_path
         self._sampling_depth = sampling_depth
         self._threads = threads
 

@@ -43,12 +43,14 @@ class PathSettings(object):
         self._ref_seq_path = None
         self._taxonomy_path = None
         self._param_path = None
+        self._rep_set_tree_path = None
         self._multiple_split_param = multiple_split_param
 
         self._default_analysis_dir = "03.OTU_clustering_result"
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
                                              "03.1.otu_clustering_{}".format(
                                                  taxon), )
+
         self.set_ref_database()
 
         self._final_dir = "04.Diversity_results"
@@ -68,7 +70,7 @@ class PathSettings(object):
 
         self._map_file_path = os.path.join(os.getcwd(), "map.txt")
 
-        self._rep_set_tree_path = ""
+
 
     @property
     def ref_db(self):
