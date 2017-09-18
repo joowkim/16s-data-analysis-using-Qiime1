@@ -1,6 +1,6 @@
 import os
 
-from qiime.automation.setting.db_path import gg_bac_chimera_path
+from qiime.automation.setting.db_path import gg_bac_chimera_path, silva_bac_rep_set_tree_path, gg_bac_rep_set_tree_path
 from qiime.automation.setting.db_path import gg_bac_div_param_path
 from qiime.automation.setting.db_path import gg_bac_param_path
 from qiime.automation.setting.db_path import gg_bac_ref_seq_path
@@ -67,6 +67,8 @@ class PathSettings(object):
         self._pcoa_2d_dir = os.path.join(self.final_path, "04.4.PcoA.2d")
 
         self._map_file_path = os.path.join(os.getcwd(), "map.txt")
+
+        self._rep_set_tree_path = ""
 
     @property
     def ref_db(self):
@@ -159,6 +161,7 @@ class PathSettings(object):
             self._taxonomy_path = gg_bac_taxonomy_path
             self._param_path = gg_bac_param_path
             self._div_param_path = gg_bac_div_param_path
+            self._rep_set_tree_path = gg_bac_rep_set_tree_path
 
         elif self._ref_db == "silva":
             self._chimera_ref_path = silva_bac_chimera_path
@@ -166,6 +169,7 @@ class PathSettings(object):
             self._taxonomy_path = silva_bac_taxonomy_path
             self._param_path = silva_bac_param_path
             self._div_param_path = silva_bac_div_param_path
+            self._rep_set_tree_path = silva_bac_rep_set_tree_path
 
         elif self._ref_db == "unite":
             self._chimera_ref_path = its_chimera_path
