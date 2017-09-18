@@ -24,17 +24,17 @@ __author__ = "jkkim"
 class PathSettings(object):
     def __init__(self, taxon, ref_db):
         self._ref_db = ref_db
-        self._default_preprocess_dir = '01.Preprocess'
+        self._default_preprocess_dir = '03.Preprocess'
         self._join_fastq_dir = os.path.join(self._default_preprocess_dir,
-                                            '01.1.Join_fastq', )
+                                            '03.1.Join_fastq', )
         self._split_out_dir = os.path.join(self._default_preprocess_dir,
-                                           '01.2.Split_out', )
+                                           '03.2.Split_out', )
         self._seq_fna_path = os.path.join(self._split_out_dir,
                                           "seqs.fna", )
         self._length_trimmed_seqs_fna_path = os.path.join(self._split_out_dir,
                                                           "seqs.length_trimmed.fna", )
         self._chimera_checked_dir = os.path.join(self._default_preprocess_dir,
-                                                 "01.3.Chimera_checked", )
+                                                 "03.3.Chimera_checked", )
         self._seqs_chimeras_filtered_fna_path = os.path.join(
             self._chimera_checked_dir,
             "seqs_chimeras_filtered.fna", )
@@ -46,31 +46,29 @@ class PathSettings(object):
         self._rep_set_tree_path = None
         self._multiple_split_param = multiple_split_param
 
-        self._default_analysis_dir = "03.OTU_clustering_result"
+        self._default_analysis_dir = "04.OTU_clustering_result"
         self._otu_cluster_dir = os.path.join(self._default_analysis_dir,
-                                             "03.1.otu_clustering_{}".format(
+                                             "04.1.otu_clustering_{}".format(
                                                  taxon), )
 
         self.set_ref_database()
 
-        self._final_dir = "04.Diversity_results"
+        self._final_dir = "05.Diversity_results"
 
         if not os.path.isdir(self._final_dir):
             os.makedirs(self._final_dir)
 
         self._final_path = os.path.abspath(self._final_dir)
 
-        self._krona_path = os.path.join(self._final_path, "04.2.Krona")
-        self._otu_heatmap_path = os.path.join(self._final_path, "04.3.Heatmap")
+        self._krona_path = os.path.join(self._final_path, "05.2.Krona")
+        self._otu_heatmap_path = os.path.join(self._final_path, "05.3.Heatmap")
 
         self._diversity_result_dir = os.path.join(self._final_path,
-                                                  '04.1.diversity_analysis_{}'.format(
+                                                  '05.1.diversity_analysis_{}'.format(
                                                       taxon), )
-        self._pcoa_2d_dir = os.path.join(self.final_path, "04.4.PcoA.2d")
+        self._pcoa_2d_dir = os.path.join(self.final_path, "05.4.PcoA.2d")
 
         self._map_file_path = os.path.join(os.getcwd(), "map.txt")
-
-
 
     @property
     def ref_db(self):
