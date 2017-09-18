@@ -26,6 +26,7 @@ class Logs(object):
 
         self._rawdata_dir = os.path.abspath(PreProcess.rawdata_dir)
         self._taxon = PreProcess.taxon
+        self._ref_db = PreProcess.ref_db
         self._settings_path = PathSettings(PreProcess.taxon, PreProcess.ref_db)
         self._logs_path = os.path.join('02.Logs', 'reads_stat.log')
 
@@ -58,7 +59,7 @@ class Logs(object):
 
     def make_logs(self):
         result = list()
-        biom = Biom(self._taxon)
+        biom = Biom(self._taxon, self._ref_db)
 
         stat_file = os.path.join(biom._otu_cluster_dir, "stats_reads_per_sample.txt")
 

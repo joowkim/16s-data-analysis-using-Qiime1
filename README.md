@@ -1,5 +1,5 @@
 
-Qiime nearly automation program for Miseq data (by default setting)
+Qiime nearly automation program for Miseq data (for closed otus picking)
 ===================================================================
 
 ### Required program list

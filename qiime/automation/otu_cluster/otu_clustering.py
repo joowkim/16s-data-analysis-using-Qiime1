@@ -79,7 +79,7 @@ class Biom(object):
         return pynast_biom_path
 
     def filtered_biom(self):
-        cmd = "filter_otus_from_otus_table.py -i {} -o {} --min_count_fraction 0.00005".format(
+        cmd = "filter_otus_from_otu_table.py -i {} -o {} --min_count_fraction 0.00005".format(
             self.biom_path,
             self.filtered_biom_path
         )
