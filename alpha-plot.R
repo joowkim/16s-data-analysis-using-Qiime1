@@ -50,4 +50,4 @@ ggplot(final.df) + geom_boxplot(aes(x=Description, y=value, color=Description)) 
   theme(text=element_text(size=15)) + scale_fill_brewer(palette="Set3") +
   labs(color = "Sample") + theme(legend.text=element_text(size=15))
 
-ggsave(paste0("alpha",'.png'), width=20, height=10, units="cm")
+ggsave(paste0("alpha",'.tiff'), width=20, height=10, units="cm", dpi=900)
