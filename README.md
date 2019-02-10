@@ -1,5 +1,5 @@
 
-Qiime nearly automation program for Miseq data (for closed otus picking)
+Deprecated
 ===================================================================
 
 ### Required program list
